@@ -476,7 +476,8 @@ function isInteger(number) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(str) {
-  return parseFloat(str);
+  // eslint-disable-next-line no-undef
+  return Number.parseFloat(str);
 }
 
 /**
@@ -494,7 +495,7 @@ function getFloatOnString(str) {
  * '10', 8              => 8
  */
 function getIntegerOnString(str, base) {
-  return parseInt(str, base) || NaN;
+  return Number.parseInt(str, base);
 }
 
 /**
@@ -634,9 +635,7 @@ function getRandomInteger(min, max) {
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
-  const result = (a ** 2 + b ** 2) ** 0.5;
-  // eslint-disable-next-line no-restricted-globals
-  return isFinite(result) ? result : Number.POSITIVE_INFINITY;
+  return Math.hypot(a, b);
 }
 
 /**
@@ -653,17 +652,7 @@ function getHypotenuse(a, b) {
  * 15 => 8
  */
 function getCountOfOddNumbers(number) {
-  let count = 0;
-
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i <= number; i++) {
-    if (i % 2 !== 0) {
-      // eslint-disable-next-line no-plusplus
-      count++;
-    }
-  }
-
-  return count;
+  return Math.ceil(Math.abs(number / 2));
 }
 
 module.exports = {
